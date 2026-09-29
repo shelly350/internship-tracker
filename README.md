@@ -33,32 +33,6 @@ version is kept as `data/applications.csv.bak`.
 Two roles at the same company are separate applications. Adding the same
 company and role twice is rejected.
 
-## Safety
-
-- No network access, no running other programs, no `eval`, and no Java
-  object deserialization. The data file is read as plain text only.
-- Every input goes through `Validator`: length limits, no control characters,
-  strict date format, no future applied dates.
-- A corrupt data file is reported with its line number and never overwritten.
-- Saves write a temporary file first and then swap it in, so a crash cannot
-  leave a half-written file.
-- Text starting with `=`, `+`, `-` or `@` is prefixed in the CSV so Excel or
-  Sheets cannot run it as a formula.
-
-The file is not encrypted. Anyone who can log in to your computer can read it,
-so use your normal account protections.
-
-## Putting it on GitHub
-
-`.gitignore` already excludes `data/` and `out/`, so your real applications are
-not uploaded. Check with `git status` before your first commit.
-
-## What is different from the web version
-
-The web version reads Gmail through Claude. This one has no email sync: you
-record an email yourself with menu option 5 (date and subject). Adding Gmail
-sign-in would need Google's OAuth setup and is a good follow-up project.
-
 ## Ideas to extend
 
 - A `follow-up date` field and a list of applications with no reply after 14 days
